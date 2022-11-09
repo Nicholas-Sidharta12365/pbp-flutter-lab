@@ -137,13 +137,13 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
+              if(_counter != 0)FloatingActionButton(
+                onPressed: _decrementCounter,
+                child: const Icon(Icons.remove),
+              )else const Text(''),
               FloatingActionButton(
                 onPressed: _incrementCounter,
                 child: const Icon(Icons.add),
-              ),
-              FloatingActionButton(
-                onPressed: _decrementCounter,
-                child: const Icon(Icons.remove),
               ),
             ],
           ), // This trailing comma makes auto-formatting nicer for build methods.
