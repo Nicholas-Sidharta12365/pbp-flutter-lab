@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:counter_7/add.dart';
+import 'package:counter_7/data.dart';
+
 
 void main() {
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+
   const MyApp({super.key});
 
   // This widget is the root of your application.
@@ -24,13 +28,21 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Program Counter'),
+      home: const MyHomePage(title: 'Program Counter',judulList: [], nominalList: [], budget: []),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+  final List<String> judulList;
+  final List<int> nominalList;
+  final List<String> budget;
+
+  const MyHomePage({super.key, 
+      required this.title,
+      required this.judulList,
+      required this.nominalList,
+      required this.budget});
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -100,6 +112,46 @@ class _MyHomePageState extends State<MyHomePage> {
           // the App.build method, and use it to set our appbar title.
           title: Text(widget.title),
         ),
+
+        // Menambahkan drawer menu
+        drawer: Drawer(
+            child: Column(
+              children: [
+                // Menambahkan clickable menu
+                ListTile(
+                  title: const Text('Counter'),
+                  onTap: () {
+                    // Route menu ke halaman utama
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => MyHomePage(title: 'Program Counter',judulList: widget.judulList, nominalList: widget.nominalList, budget: widget.budget)),
+                    );
+                  },
+                ),
+                ListTile(
+                  title: const Text('Tambah Budget'),
+                  onTap: () {
+                    // Route menu ke halaman form
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => AddBudget(judulList: widget.judulList, nominalList: widget.nominalList, budget: widget.budget)),
+                    );
+                  },
+                ),
+                ListTile(
+                  title: const Text('Data Budget'),
+                  onTap: () {
+                    // Route menu ke halaman form
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => DataBudget(judulList: widget.judulList, nominalList: widget.nominalList, budget: widget.budget)),
+                    );
+                  },
+                ), 
+              ],
+            ),
+          ),
+        
         body: Center(
           // Center is a layout widget. It takes a single child and positions it
           // in the middle of the parent.
