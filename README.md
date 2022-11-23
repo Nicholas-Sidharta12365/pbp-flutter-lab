@@ -59,4 +59,31 @@ Navigator menggunakan sistem stack dimana top of stack yang akan di display pada
 5. Membuat submit button yang akan menghandle saat data ingin di save oleh user.
 6. Pada data.dart menggunakan widget card untuk mendisplay data dari add.dart. 
 7. Memodifikasi constructor ketiga file untuk dapat menerima arguments yang akan di parse (Agar data tidak hilang).
-7. Memodifikasi navigator destination agar memiliki argument pass.
+8. Memodifikasi navigator destination agar memiliki argument pass.
+
+# Tugas 9
+# Apakah bisa kita melakukan pengambilan data JSON tanpa membuat model terlebih dahulu? Jika iya, apakah hal tersebut lebih baik daripada membuat model sebelum melakukan pengambilan data JSON?
+Bisa, akan tetapi tidak lebih baik karena tanpa adanya model maka data yang didapat akan lebih sulit untuk di proses karena tidak ada nya struktur pasti yang menjadi guide data yang diterima tersebut.
+
+# Sebutkan widget apa saja yang kamu pakai di proyek kali ini dan jelaskan fungsinya.
+1. Column: Mendisplay child dalam bentuk satu baris
+2. ListTile: Mendisplay child dalam bentuk list
+3. Drawer: Sidebar / burger
+4. AppBar: Display top bar
+5. Text: Memunculkan text
+
+# Jelaskan mekanisme pengambilan data dari json hingga dapat ditampilkan pada Flutter.
+1. Menggunakan Future dan async sebagai model functionnya
+2. Mengambil String dari local database yaitu pada assets/movie.json menggunakan rootBundle.loadString ditambah dengan penggunaan await
+3. Decode data yang didapat dari json tadi
+4. Map decoded data pada suatu list yang berisi object Watchlist
+5. Return data list tersebut.
+6. Menggunakan syntax ```${snapshot.data![index]``` diikuti oleh fieldnya untuk menampilkan data yang di parse tadi di flutter app.
+
+# Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas.
+1. Menambahkan 2 page baru mywatchlist dan details.
+2. Mengkategorisasikan dir lib menjadi model, pages, dan main.
+3. Membuat model dari data json tugas 3 menggunakan Quicktype, lalu juga membuat database jsonnya yang diletakan di folder assets.
+4. Membuat LisTile pada mywatchlist.dart dan menggunakan data dari json untuk dimap pada cards tersebut
+5. Menggunakan Navigator pushReplacement untuk membuka page details
+6. Meletakan data yang di parse dari mywatchlist pada details.dart untuk menampilkan detail dari suatu movie yang ditekan oleh user.

@@ -1,6 +1,7 @@
+import 'package:counter_7/pages/mywatchlist.dart';
 import 'package:flutter/material.dart';
-import 'package:counter_7/add.dart';
-import 'package:counter_7/data.dart';
+import 'package:counter_7/pages/add.dart';
+import 'package:counter_7/pages/data.dart';
 
 
 void main() {
@@ -148,6 +149,16 @@ class _MyHomePageState extends State<MyHomePage> {
                     );
                   },
                 ), 
+                ListTile(
+                title: const Text('My Watch List'),
+                onTap: () {
+                  // Route menu ke halaman form
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => MyWatchlist(judulList: widget.judulList, nominalList: widget.nominalList, budget: widget.budget)),
+                  );
+                },
+              ),
               ],
             ),
           ),
